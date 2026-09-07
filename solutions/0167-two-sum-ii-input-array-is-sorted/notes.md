@@ -1,48 +1,17 @@
 ---
-number: 15
-title: 3Sum
+number: 167
+title: Two Sum II Input Array Is Sorted
 difficulty: Medium
 pattern: Two pointers
 date_solved: 2026-09-07
-stage_needed: WALKTHROUGH
+stage_needed: HINT
 video: none
-review_next: 2026-09-08
+review_next: 2026-09-14
 ---
 
-# 15. 3Sum
+# 167. Two Sum II Input Array Is Sorted
 
-[Link to problem](https://leetcode.com/problems/3sum/)
-
-## The problem
-
-Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]]
-such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
-
-Notice that the solution set must not contain duplicate triplets.
-
-**Example 1:**
-Input: nums = [-1,0,1,2,-1,-4]
-Output: [[-1,-1,2],[-1,0,1]]
-Explanation:
-nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0.
-nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0.
-nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.
-The distinct triplets are [-1,0,1] and [-1,-1,2].
-The order of the output and the order of the triplets does not matter.
-
-**Example 2:**
-Input: nums = [0,1,1]
-Output: []
-Explanation: The only possible triplet does not sum up to 0.
-
-**Example 3:**
-Input: nums = [0,0,0]
-Output: [[0,0,0]]
-Explanation: The only possible triplet sums up to 0.
-
-**Constraints:**
-- 3 <= nums.length <= 3000
-- -10^4 <= nums[i] <= 10^4
+[Link to problem](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
 
 ## The question in my own words
 
