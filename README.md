@@ -9,7 +9,7 @@ I'm also turning these into videos for people learning DSA from scratch, so the
 explanations are written to survive being repeated by someone who just learned
 them.
 
-**1 problems solved.**
+**2 problems solved.**
 
 ---
 
@@ -26,6 +26,7 @@ _Nothing due. Solve something new._
 | # | Problem | Difficulty | Pattern | Solved | Video |
 |---|---------|------------|---------|--------|-------|
 | 15 | [3Sum](solutions/0015-3sum/notes.md) | Medium | Two pointers | 2026-09-07 |  |
+| 167 | [Two Sum II Input Array Is Sorted](solutions/0167-two-sum-ii-input-array-is-sorted/notes.md) | Medium | Two pointers | 2026-09-07 |  |
 
 ---
 
@@ -35,7 +36,7 @@ The goal is mastering ~20 patterns, not counting problems.
 
 | Pattern | Problems solved |
 |---------|-----------------|
-| Two pointers | 1 |
+| Two pointers | 2 |
 
 ---
 
