@@ -2,11 +2,11 @@
 number: 15
 title: 3Sum
 difficulty: Medium
-pattern: Two pointers
+pattern: Sorting + two pointers
 date_solved: 2026-09-07
 stage_needed: WALKTHROUGH
 video: none
-review_next: 2026-09-08
+review_next: 2026-09-14
 ---
 
 # 15. 3Sum
@@ -44,49 +44,70 @@ Explanation: The only possible triplet sums up to 0.
 - 3 <= nums.length <= 3000
 - -10^4 <= nums[i] <= 10^4
 
-## The question in my own words
+## Reading the constraints
 
-One or two sentences. If I can't do this, I haven't read it properly.
+- `n` up to 3,000 → check the complexity budget table → O(n²) fits, O(n³) doesn't
+- Values range from -10⁵ to 10⁵ → numbers can be negative, zero, or positive
+- At least 3 elements → always enough to form a triplet
 
-## What the constraints told me
+This told me before writing any code: I need an O(n²) solution.
 
-n is up to X, so I need roughly O(?). Values range from A to B, which means...
+## How I got to the solution
 
-## My first idea (brute force)
+### Step 1 — Reduce the problem
 
-What I'd do if I were allowed to be slow. Why it's too slow.
+If `a + b + c = 0`, then `b + c = -a`. So if I fix one number, I just need
+to find two numbers that add up to its negative. A 3Sum becomes a 2Sum.
 
-## The insight
+### Step 2 — Solve 2Sum first
 
-One sentence, no code. The thing that unlocks it.
+For 2Sum with a hash map: iterate through the array, for each element check
+if `target - element` is already in the map. If yes, found a pair. If no,
+add the element to the map. This is O(n).
 
-## How I could have got there myself
+### Step 3 — Handle duplicates (the hard part)
 
-The question I should have asked. This is the transferable part — the reason
-the trick works, not the trick.
+The problem says no duplicate triplets. With unsorted data and hash maps,
+tracking duplicates is messy.
 
-## Where I got stuck
+**Sorting solves this.** Sorting puts duplicates next to each other. Now:
+- In the outer loop: if `nums[i] == nums[i-1]`, skip — already checked this value
+- After finding a match: move both pointers inward, then skip past any duplicates
 
-Be specific and be honest. Was it the algorithm or the Python?
+### Step 4 — Two pointers instead of hash map
 
-## Mistake I made
+Since the array is sorted, 2Sum can use two pointers instead of a hash map:
+- `left` starts at `i+1`, `right` starts at the end
+- Sum too big → move `right` left
+- Sum too small → move `left` right
+- Match → record it, move both inward, skip duplicates
 
-The single highest-value line in this file. Read all of these before an interview.
-
-## Dry run
-
-Walk a tiny example by hand. This is the section that becomes the video.
+This is still O(n) for the inner search but uses O(1) space.
 
 ## Complexity
 
-Time: O(?)
-Space: O(?)
+- **Time: O(n²)** — outer loop is O(n), inner two-pointer sweep is O(n).
+  The duplicate-skip while loops don't add extra cost because they share the
+  same pointers — left can only move right, right can only move left, so the
+  total moves per fixed `i` is at most n.
+- **Space: O(1)** — ignoring the output list. Sorting is in-place.
 
-## Python I had to look up
+## Mistakes I made
 
-- `thing` — what it does, in my own words.
+1. Wrote `while left > right` instead of `while left < right` — backwards condition
+2. Used `nums(i)` instead of `nums[i]` — parentheses call functions, brackets index
+3. Forgot `left < right` guard on duplicate-skip while loops — would crash on edge cases
 
-## Similar problems
+All three were translation errors, not logic errors. The algorithm was right
+every time. Lesson: slow down when converting pseudocode to Python.
 
-- [ ] LeetCode NNN. Name
-- [ ] LeetCode NNN. Name
+## What I learned
+
+- **Read constraints first.** They tell you the complexity budget before you
+  think about approaches.
+- **Sorting is a tool, not just an operation.** It enables two pointers AND
+  makes duplicate handling trivial.
+- **Reduce the problem.** 3Sum looks hard. 2Sum is easy. Fix one variable
+  and a harder problem becomes an easier one.
+- **Nested loops don't always multiply.** When inner loops share pointers,
+  count total pointer moves, not loop nesting depth.
