@@ -17,7 +17,10 @@ them.
 
 Cold re-solves, no notes, from scratch. If it fails, the interval resets.
 
-_Nothing due. Solve something new._
+| # | Problem | Pattern | Was due |
+|---|---------|---------|---------|
+| 15 | [3Sum](solutions/0015-3sum/notes.md) | Sorting + two pointers | 2026-09-14 |
+| 167 | [Two Sum II Input Array Is Sorted](solutions/0167-two-sum-ii-input-array-is-sorted/notes.md) | Two pointers | 2026-09-14 |
 
 ---
 
